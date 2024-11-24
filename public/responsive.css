@@ -1,0 +1,109 @@
+/* style.css */
+
+/* ... (your existing CSS) ... */
+
+/* Media query for smaller screens (e.g., tablets and phones) */
+@media (max-width: 768px) {  /* Adjust this breakpoint as needed */
+
+    #header {
+        padding: 20px; /* Reduce padding on smaller screens */
+    }
+
+    #navbar {
+        flex-direction: column; /* Stack navigation items vertically */
+    }
+
+    #navbar li {
+        padding: 10px 0; /* Adjust padding for vertical layout */
+    }
+
+    #hero {
+        padding: 20px;
+        height: auto; /* Prevent hero section from being too tall */
+    }
+
+    #hero h1 {
+        font-size: 36px; /* Reduce font size */
+    }
+
+    #feature {
+        justify-content: center; /* Center feature boxes */
+    }
+    #feature .fe-box {
+        margin: 15px;  /* Add some margin around feature boxes */
+    }
+    .pro-container {
+        justify-content: center;
+    }
+    #products1 .pro {
+        width: 45%; /* Products take up more width on smaller screens */
+        margin: 10px;
+    }
+    #sm-banner .banner-box {
+        min-width: 100%; /* Banners stack vertically */
+        height: 30vh;
+    }
+    #banner3 {
+        padding: 0 20px; /* Reduce padding */
+    }
+    #banner3 .banner-box {
+        width: 100%; /* Banners stack vertically */
+        min-width: auto;
+    }
+    #newletter .form {
+        width: 90%; /* Newsletter form takes up almost full width */
+        margin: 20px auto; /* Center the form */
+
+    }
+    footer .col {
+        width: 48%;
+    }
+    #blog{
+        padding: 50px 50px 0 50px;
+    }
+    #blog .blog-box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        position: relative;
+        padding-bottom: 90px;
+    
+    }
+    #blog .blog-img {
+        width: 100%; /* Images take full width */
+        margin-right: 0;
+        margin-bottom: 20px; /* Add space below images */
+    }
+    #blog .blog-details {
+        width: 100%; /* Details take full width */
+    }
+    #contact-details {
+        flex-direction: column; /* Stack contact details vertically */
+    }
+    #contact-details .details {
+        width: 90%; /* Contact details take almost full width */
+        margin-bottom: 20px;
+    }
+    #contact-details .map {
+        width: 90%; /* Map takes almost full width */
+        height: 250px; /* Adjust map height */
+    }
+    #form-details {
+        flex-direction: column; /* Form and people details stack vertically */
+    }
+    #form-details form {
+        width: 90%; /* Form takes almost full width */
+        margin-bottom: 20px;
+    }
+    #form-details .people {
+        width: 90%;
+    }
+    
+    /* cart page */
+    .cart-1{
+        width: 100%;
+    }
+
+}
+/* ...add more media queries for different breakpoints if needed... */
