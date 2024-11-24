@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+
+<section id="prodetails" class="section-p1">
+    <div class="single-pro-image">
+        <img src="<%= product.image %>" width="100%" id="MainImg" alt="<%= product.name %>">
+
+         <%-- You'll probably want to make this dynamic based on your product data --%>
+    </div>
+
+    <div class="single-pro-details">
+        <h6>Home / <%= product.category || "Product" %></h6> <%-- Dynamic category or default --%>
+        <h4><%= product.name %></h4>
+        <h2>₹<%= product.price %></h2>
+        <select> <%-- Size selection (make dynamic if needed) --%>
+             </select>
+        <input type="number" value="1">
+        <button class="normal add-cart" data-product-id="<%= product.id %>">Add To Cart</button>
+        <h4>Product Details</h4> <%-- Spelling correction --%>
+        <span><%= product.description || "No description available." %></span> <%-- Dynamic description --%>
+    </div>
+</section>
+
+
+
+<%- include('partials/footer') %>
+<script>
+    // Add to cart logic (same as index.ejs and shop.ejs)
+    const addToCartButton = document.querySelector('.add-cart'); // Select the button
+    addToCartButton.addEventListener('click', () => {
+    const productId = addToCartButton.dataset.productId;
+    fetch(`/api/cart/add/${productId}`, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            })
+        .catch(error => {
+            console.error('Error adding to cart:', error);
+            alert('There was an error adding to the cart.');
+        });
+    });
+
+
+</script>

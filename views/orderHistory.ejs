@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+
+<h2>Order History</h2>
+
+<% if (orders.length === 0) { %>
+    <p>You have no previous orders.</p>
+<% } else { %>
+    <ul>
+        <% orders.forEach(order => { %>
+            <li>
+                Order #<%= order.id %> (<%= order.createdAt.toDateString() %>) - Total: ₹<%= order.total.toFixed(2) %> - Status: <%= order.status %>
+
+                <h3>Items:</h3>
+                <ul>
+
+                    <% order.OrderItems.forEach(item => { %> <%-- Accessing associated items --%>
+                        <li><%= item.Product.name %> x <%= item.quantity %> - ₹<%= item.price * item.quantity %></li> <%-- Display item details --%>
+
+
+                    <% }); %>
+
+                </ul>
+
+
+            </li>
+        <% }); %>
+    </ul>
+<% } %>
+
+
+
+
+<%- include('partials/footer') %>

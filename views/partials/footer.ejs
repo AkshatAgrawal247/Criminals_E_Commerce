@@ -1,0 +1,61 @@
+<footer class="section-p1">
+    <div class="col">
+        <div style="display: flex;">
+            <img class="logo" src="/images/pngegg.png" style="width: 80px; height: 80px;">
+            <img src="/images/Logo/logo_transparent.png" alt="Criminals" style="height: 40px;width: 150px;">
+        </div>
+
+        <h4>Contact</h4>
+        <p><strong>Address: </strong>DLF Cyber City, Gurugram-122002, India</p>
+        <p><strong>Phone:</strong> +91 1122334455 / 9988665577</p>
+        <p><strong>Office Hours:</strong> 10:00 am - 10:00 pm, Mon-Sat </p>
+        <div class="follow">
+            <h4>Follow Us</h4>
+            <div class="icon">
+                <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <%-- Added links --%>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <h4>About</h4>
+        <a href="/about">About Us</a>  <%-- Corrected link --%>
+        <a href="#">Delivery Information</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <div class="col">
+        <h4>My Account</h4>
+        <% if (user) { %>
+            <p>Welcome, <%= user.username %></p> <%-- Greet logged-in user --%>
+        <% } else { %>
+            <a href="/login">Sign In</a>
+        <% } %>
+        <a href="/cart">View Cart</a> <%-- Corrected link --%>
+        <a href="#">My Wishlist</a>
+        <a href="#">Track My Order</a>
+        <a href="#">Help</a>
+    </div>
+
+    <div class="col install">
+        <h4>Install App</h4>
+        <p>From App Store or Google Play</p>
+        <div class="row">
+            <img src="/images/apple_store (1).jpeg" style="height: 40px;width: 100px;" alt="App Store">
+            <img src="/images/play_store (1).jpeg" style="height: 40px;width: 100px;" alt="Google Play">
+        </div>
+        <p>Secured Payment Gateways</p>
+        <img src="/images/payment_gateways.webp" style="height: 70px;width: 200px;" alt="Payment Gateways">
+    </div>
+
+    <div class="copyright">
+        <p>© <%= new Date().getFullYear() %> Criminals. All rights reserved.</p> <%-- Dynamic year --%>
+    </div>
+</footer>
+<script src="/js/scripts.js"></script>

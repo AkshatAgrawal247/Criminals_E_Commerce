@@ -1,0 +1,55 @@
+<%- include('partials/header', { activePage: 'shop' }) %>
+
+<section id="page-header">
+    <h2>#Shop</h2>
+    <p>Explore our wide selection of products!</p>
+</section>
+
+
+<section id="products-section" class="section-p1">
+    <div class="pro-container">
+        <% products.forEach(product => { %>
+        <div class="pro">
+            <img src="<%= product.image %>" style="height: 450px; width: 350px;" alt="<%= product.name %>">
+            <div class="des">
+                <span>Criminals</span>
+                <h5><%= product.name %></h5>
+                <div class="star">
+                </div>
+                <h4>₹<%= product.price %></h4>
+            </div>
+            <a class="add-cart cart1" href="#" data-product-id="<%= product.id %>">
+                <i class="fa fa-shopping-cart cart" aria-hidden="true"></i>
+            </a>
+        </div>
+        <% }); %>
+    </div>
+</section>
+
+
+
+
+<%- include('partials/footer') %>
+
+
+<script>
+    const addToCartButtons = document.querySelectorAll('.add-cart');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const productId = event.target.closest('.add-cart').dataset.productId;
+
+            fetch(`/api/cart/add/${productId}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    // You might want to update cart count or display here
+                })
+                .catch(error => {
+                    console.error('Error adding to cart:', error);
+                    alert('There was an error adding to the cart.');
+                });
+        });
+    });
+</script>

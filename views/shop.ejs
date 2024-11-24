@@ -1,0 +1,55 @@
+<%- include('partials/header', { activePage: 'shop' }) %>
+
+<section id="page-header">
+    <h2>#stayhome</h2>
+    <p>Save more with coupons & up to 70% off!</p>
+</section>
+
+<section id="products1" class="section-p1">
+    <div class="pro-container">
+        <% products.forEach(product => { %>
+            <div class="pro">
+                <img src="<%= product.image %>" style="height: 450px;width: 350px;" alt="<%= product.name %>">
+                <div class="des">
+                    <span>Criminals</span>
+                    <h5><%= product.name %></h5>
+                    <div class="star"> </div> <%-- Placeholder for star ratings if needed --%>
+                    <h4>₹<%= product.price %></h4>
+                </div>
+                <a class="add-cart cart1" href="#" data-product-id="<%= product.id %>">
+                    <i class="fa fa-shopping-cart cart" aria-hidden="true"></i>
+                </a>
+            </div>
+        <% }); %>
+    </div>
+</section>
+
+<section id="pagination" class="section-p1"> <%-- Placeholder for pagination --%>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+</section>
+
+<%- include('partials/footer') %>
+
+<script>
+
+    const addToCartButtons = document.querySelectorAll('.add-cart');
+    
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); 
+            const productId = event.target.closest('.add-cart').dataset.productId;
+            fetch(`/api/cart/add/${productId}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Item added to cart!');  
+                    // Update cart display or other logic as needed
+                })
+                .catch(error => {
+                    console.error('Error adding to cart:', error);
+                    alert('There was an error adding to the cart.');
+                });
+        });
+    });
+</script>

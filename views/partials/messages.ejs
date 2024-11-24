@@ -1,0 +1,10 @@
+<% if (typeof message !== 'undefined') { %>
+    <div class="message"> <%-- Add CSS for styling --%>
+        <p><%= message %></p>
+    </div>
+<% } %>
+<% if (typeof error !== 'undefined') { %>
+    <div class="error"> <%-- Add CSS for styling --%>
+        <p><%= error %></p>
+    </div>
+<% } %>

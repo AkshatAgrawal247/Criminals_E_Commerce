@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<section>
+    <div class="container">
+        <div class="form-box">
+            <div class="toggle-box">
+                <button class="toggle-btn" onclick="showSignIn()">Sign In</button>
+                <button class="toggle-btn" onclick="showSignUp()">Sign Up</button>
+                <hr id="indicator">
+            </div>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="input-group" action="/signup" method="POST"> <%-- POST to /signup --%>
+                <h3>Create New Account</h3>
+                <input type="text" name="username" placeholder="Username" class="input-field" required>
+                <input type="password" name="password" placeholder="Password" class="input-field" required> <%-- Added name attributes --%>
+                <button type="submit" class="submit-btn">Create Account</button>
+                <p>Already have an account? <a href="#" onclick="showSignIn()">Sign In</a></p>
+            </form>
+
+            <!-- Sign In Form -->
+            <form id="signin-form" class="input-group" action="/login" method="POST">
+                <h3>Sign In</h3>
+                <input type="text" name="username" placeholder="Username" class="input-field" required>  <%-- Added name attribute --%>
+                <input type="password" name="password" placeholder="Password" class="input-field" required> <%-- Added name attribute --%>
+                <button type="submit" class="submit-btn">Sign In</button>
+                <p>Don't have an account? <a href="#" onclick="showSignUp()">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+<%- include('partials/footer') %>

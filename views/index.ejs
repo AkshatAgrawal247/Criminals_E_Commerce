@@ -1,0 +1,86 @@
+<%- include('partials/header', { activePage: 'home' }) %>
+
+<section id="hero">
+    <h4>Trade-in-offer</h4>
+    <h2>Super value deals</h2>
+    <h1>On all products</h1>
+    <p>Save more with coupons & up to 70% off!</p>
+    <button><a href="/products">Shop Now</a></button> <%-- Link to products page --%>
+</section>
+
+<section id="feature" class="section-p1">
+    <div class="fe-box">
+        <img src="/images/free_shipping.jpeg" alt="Free Shipping"> <%-- Corrected path --%>
+        <h6>Free Shipping</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/images/save_time.jpeg" alt="Save Time">
+        <h6>Save Time</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/images/save_money.jpeg" alt="Save Money">
+        <h6>Save Money</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/images/happy_sell.jpeg" alt="Happy Sell">
+        <h6>Happy Sell</h6>
+    </div>
+    <div class="fe-box">
+        <img src="/images/support.jpeg" alt="24/7 Support">
+        <h6>24/7 Support</h6>
+    </div>
+</section>
+
+<section id="products1" class="section-p1">
+    <h2>Featured Products</h2>
+    <p>Summer Collection New Modern Design</p> <%-- Corrected typo --%>
+    <div class="pro-container">
+        <% products.forEach(product => { %>
+            <div class="pro">
+                <img src="<%= product.image %>" style="height: 450px;width: 350px;" alt="<%= product.name %>"> <%-- Added alt text --%>
+                <div class="des">
+                    <span>Criminals</span>
+                    <h5><%= product.name %></h5>
+                    <div class="star">
+                        <%-- You can add star rating logic here if needed --%>
+                    </div>
+                    <h4>₹<%= product.price %></h4>
+                </div>
+                <a class="add-cart cart1" href="#" data-product-id="<%= product.id %>">
+                    <i class="fa fa-shopping-cart cart" aria-hidden="true"></i>
+                </a>
+            </div>
+        <% }); %>
+    </div>
+</section>
+
+
+<section id="banner" class="section-m1">
+    <h4>Repair Services</h4>
+    <h2>Up to <span>70% Off</span> - All t-Shirts & Accessories</h2>
+    <button class="normal">Explore More</button>
+</section>
+
+
+
+<%- include('partials/footer') %>
+
+<script>
+    const addToCartButtons = document.querySelectorAll('.add-cart');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            const productId = event.target.closest('.add-cart').dataset.productId;
+            fetch(`/api/cart/add/${productId}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message); // Use message from the server's JSON response
+                })
+                .catch(error => {
+                    console.error('Error adding to cart:', error);
+                    alert('There was an error adding to the cart.');
+                });
+        });
+    });
+</script>
